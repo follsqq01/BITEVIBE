@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Details - Mellow Kink</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Inter, sans-serif;
+      }
+
+      body {
+        background-color: #e5e5e5;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 16vw;
+        padding: 2vh 0;
+        background-color: #e5e5e5;
+      }
+
+      nav a {
+        color: #000;
+        font-size: 1.5vh;
+        text-transform: uppercase;
+        text-decoration: none;
+        position: relative;
+      }
+
+      nav a.active::after {
+        content: "";
+        width: 0.5vw;
+        height: 0.5vw;
+        background-color: #be4848;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -1.5vh;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .event-section {
+        padding: 3vw;
+        text-align: center;
+      }
+
+      .event-section h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 2vh;
+        font-family: "EB Garamond", Arial, sans-serif;
+      }
+
+      .event-section .image-container {
+        width: 80%;
+        margin: 0 auto 2vh;
+      }
+
+      .event-section img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .event-section p {
+        font-size: 1.8vh;
+        line-height: 1.5;
+        text-align: left;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      /* iPad (portrait and landscape) */
+      @media (max-width: 1024px) {
+        nav {
+          gap: 5vw;
+        }
+
+        nav a {
+          font-size: 2vh;
+        }
+
+        .event-section {
+          padding: 5vw;
+        }
+
+        .event-section h1 {
+          font-size: 5vh;
+        }
+
+        .event-section p {
+          font-size: 2vh;
+        }
+      }
+
+      /* Mobile devices */
+      @media (max-width: 768px) {
+        nav {
+          gap: 6vw;
+        }
+
+        nav a {
+          font-size: 1.8vh;
+        }
+
+        .event-section {
+          padding: 6vw;
+        }
+
+        .event-section h1 {
+          font-size: 4.5vh;
+        }
+
+        .event-section p {
+          font-size: 1.6vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="active">events</a>
+      <a href="#">magazine</a>
+      <a href="#">about us</a>
+    </nav>
+    <div class="event-section">
+      <h1>SHOWING THE NEW COLLECTION</h1>
+      <div class="image-container">
+        <img
+          src="img/create-a-close-up-studio-shot-for--mellow-kink---f (1) 1.png"
+          alt="Event Image"
+        />
+      </div>
+      <p>
+        Dive into the vibrant world of our latest event, SHOWING THE NEW
+        COLLECTION! Explore the bold new chains with iconic red apple charms
+        that redefine freedom. Discover how this collection empowers youth to
+        express their unique style. Step into the world of Mellow Kink at our
+        exclusive intimate photoshoot event, where luxury meets a unique style.
+      </p>
+    </div>
+  </body>
+</html>

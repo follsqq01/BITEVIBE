@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @font-face {
+        font-family: "EB Garamond";
+        src: url("EBGaramond-Medium.ttf") format("truetype");
+        font-weight: 100 900;
+        font-style: normal;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Inter, sans-serif;
+      }
+
+      body {
+        background-color: #e3e3e3;
+      }
+
+      .container {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        transition: all 0.5s ease;
+      }
+
+      .left-section {
+        width: 50%;
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: width 0.5s ease, height 0.5s ease;
+      }
+
+      .left-section video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.7;
+      }
+
+      .left-section .overlay {
+        position: relative;
+        text-align: center;
+        z-index: 1;
+      }
+
+      .left-section .logo {
+        width: 50%;
+        margin-bottom: 2vh;
+      }
+
+      .left-section p {
+        margin-top: 2vh;
+        font-size: 2vh;
+        text-transform: uppercase;
+      }
+
+      .right-container {
+        width: 50%;
+        transition: width 0.5s ease;
+      }
+
+      .right-container.full {
+        width: 100%;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 16vw;
+        padding: 2vh 0;
+        background-color: #e3e3e3;
+        transition: all 0.5s ease;
+      }
+
+      .right-container.full nav {
+        justify-content: center;
+      }
+
+      nav a {
+        color: #000;
+        font-size: 1.5vh;
+        text-transform: uppercase;
+        position: relative;
+        text-decoration: none;
+      }
+
+      nav a.active::after {
+        content: "";
+        width: 0.5vw;
+        height: 0.5vw;
+        background-color: #be4848;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -1.5vh;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .right-section {
+        padding: 3vw;
+        overflow-y: auto;
+        height: calc(100vh - 5vh);
+      }
+
+      .event {
+        margin-bottom: 5vh;
+      }
+
+      .event .image-container {
+        width: 100%;
+        height: 30vw;
+        position: relative;
+        margin-bottom: 2vh;
+      }
+
+      .event .image-container a {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+      }
+
+      .event img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .event .more-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 1.5vh;
+        text-transform: uppercase;
+        border: 0.1vw solid #fff;
+        padding: 0.5vw 1vw;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .event .image-container:hover .more-text {
+        opacity: 1;
+      }
+
+      .event .image-container:hover img {
+        filter: brightness(0.5);
+        transition: filter 0.3s ease;
+      }
+
+      .event .text-container {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .event .text-left {
+        width: 40%;
+        padding-right: 2vw;
+      }
+
+      .event .text-right {
+        width: 60%;
+      }
+
+      .event h2 {
+        font-size: 2.3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: "EB Garamond", Arial, sans-serif;
+      }
+
+      .event p {
+        font-size: 1.8vh;
+        line-height: 1.5;
+      }
+
+      /* iPad (portrait and landscape) */
+      @media (max-width: 1024px) {
+        .container {
+          flex-direction: column;
+          height: auto;
+        }
+
+        .left-section {
+          width: 100%;
+          height: 100vh;
+        }
+
+        .right-container {
+          width: 100%;
+        }
+
+        .right-container.full {
+          width: 100%;
+        }
+
+        nav {
+          gap: 5vw;
+        }
+
+        nav a {
+          font-size: 2vh;
+        }
+
+        .right-section {
+          padding: 5vw;
+          height: auto;
+        }
+
+        .event .image-container {
+          height: 50vw;
+        }
+
+        .event .more-text {
+          font-size: 2vh;
+        }
+
+        .event .text-container {
+          flex-direction: column;
+        }
+
+        .event .text-left,
+        .event .text-right {
+          width: 100%;
+          padding-right: 0;
+        }
+
+        .event h2 {
+          font-size: 5vh;
+        }
+
+        .event p {
+          font-size: 2vh;
+        }
+      }
+
+      /* Mobile devices */
+      @media (max-width: 768px) {
+        nav {
+          gap: 6vw;
+        }
+
+        nav a {
+          font-size: 1.8vh;
+        }
+
+        .left-section {
+          height: 100vh;
+        }
+
+        .left-section .logo {
+          width: 60%;
+        }
+
+        .left-section p {
+          font-size: 1.6vh;
+        }
+
+        .right-section {
+          padding: 6vw;
+        }
+
+        .event .image-container {
+          height: 60vw;
+        }
+
+        .event .more-text {
+          font-size: 2.5vh;
+        }
+
+        .event h2 {
+          font-size: 4.5vh;
+        }
+
+        .event p {
+          font-size: 1.6vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-section" id="leftSection">
+        <video autoplay muted loop>
+          <source src="img/rave.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="overlay">
+          <img class="logo" src="img/Group 1.svg" alt="Logo" />
+          <p class="lefting">
+            25 / 26 year<br />We are waiting for you at each of our events!
+          </p>
+        </div>
+      </div>
+      <div class="right-container" id="rightContainer">
+        <nav>
+          <a href="#" class="active">events</a>
+          <a href="#">magazine</a>
+          <a href="#">about us</a>
+        </nav>
+        <div class="right-section" id="rightSection">
+          <div class="event">
+            <div class="image-container">
+              <img src="img/garage 1.png" alt="Event 1" />
+            </div>
+            <div class="text-container">
+              <div class="text-left">
+                <h2>Intimate Photo Event</h2>
+              </div>
+              <div class="text-right">
+                <p>
+                  Step into the world of Mellow Kink at our exclusive intimate
+                  photoshoot event, where luxury meets a touch of rebellion.
+                  Held in a sophisticated studio with black marble walls and
+                  shimmering gold accents, the space exudes modern elegance.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="image-container">
+              <a href="event-details.html" class="more-link">
+                <img
+                  src="img/create-a-close-up-studio-shot-for--mellow-kink---f (1) 1.png"
+                  alt="Event 2"
+                />
+                <span class="more-text">more about it@!</span>
+              </a>
+            </div>
+            <div class="text-container">
+              <div class="text-left">
+                <h2>Showing Our Models</h2>
+              </div>
+              <div class="text-right">
+                <p>
+                  Dive into the vibrant world of our latest event, SHOWING THE
+                  NEW COLLECTION! Explore the bold new chains with iconic red
+                  apple charms that redefine freedom. Discover how this
+                  collection empowers youth to express their unique style.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const leftSection = document.getElementById("leftSection");
+      const rightContainer = document.getElementById("rightContainer");
+
+      leftSection.addEventListener("click", () => {
+        leftSection.style.width = "0%";
+        leftSection.style.height = "0";
+        rightContainer.classList.add("full");
+      });
+    </script>
+  </body>
+</html>
